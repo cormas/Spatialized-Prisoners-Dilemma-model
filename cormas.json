@@ -1,0 +1,5 @@
+{
+	"baseline" : "SpatializedPrisonersDilemma",
+	"summary" : "The prisoner's dilemma on a grid. Each cell is a player that plays with its eight neighbours and with itself, then adopts the strategy of its most successful neighbour, so that clusters of cooperators can hold out among defectors.",
+	"cormas" : "1.0-dev"
+}
