@@ -89,6 +89,20 @@ SPDCell class >> winningsMatrix [
 	^ winningsMatrix
 ]
 
+{ #category : 'aspects' }
+SPDCell >> aspectDefault: look [
+
+	<aspect>
+	(self state = #defection and: [ self previousState = #defection ])
+		ifTrue: [ ^ look color: Color red ].
+	(self state = #cooperation and: [ self previousState = #cooperation ])
+		ifTrue: [ ^ look color: Color blue ].
+	(self state = #cooperation and: [ self previousState = #defection ])
+		ifTrue: [ ^ look color: Color green ].
+	(self state = #defection and: [ self previousState = #cooperation ])
+		ifTrue: [ ^ look color: Color yellow ]
+]
+
 { #category : 'initialization' }
 SPDCell >> initialize [
 
@@ -122,20 +136,6 @@ SPDCell >> newState [
 					bestWinningsState := c state]].	
 
 	self bufferState: bestWinningsState
-]
-
-{ #category : 'pov' }
-SPDCell >> pov [
-
-	(self state = #defection and: [ self previousState = #defection ])
-		ifTrue: [ ^ CMPointOfView color: (Color red) ].
-	(self state = #cooperation and: [ self previousState = #cooperation ])
-		ifTrue: [ ^ CMPointOfView color: (Color blue) ].
-	(self state = #cooperation and: [ self previousState = #defection ])
-		ifTrue: [ ^ CMPointOfView color: (Color green) ].
-	(self state = #defection and: [ self previousState = #cooperation ])
-		ifTrue: [ ^ CMPointOfView color: (Color yellow) ].
-	^ nil
 ]
 
 { #category : 'accessing' }
